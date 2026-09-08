@@ -1,0 +1,5 @@
+texto = "Hello World!!!"
+texto_invertido = ""
+for letra in texto:
+    texto_invertido = letra + texto_invertido
+print(texto_invertido)

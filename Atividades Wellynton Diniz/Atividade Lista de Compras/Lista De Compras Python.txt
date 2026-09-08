@@ -1,0 +1,57 @@
+lista_de_compras = []
+# \n é usado para pular linha sem precisar utilizar print()
+while True:
+    print("\n--- MENU ---")
+    print("1. Adicionar item")
+    print("2. Ver lista")
+    print("3. Remover item")
+    print("4. Sair")
+    
+    opcao = input("Escolha uma opção (1-4): ")
+    
+    if opcao == "1":
+        item = input("Digite o nome do item: ")
+        preco = float(input("Digite o preço do item: R$ "))
+        
+        lista_de_compras.append([item, preco])
+        
+        print("O item", item, "foi adicionado!")
+        
+    elif opcao == "2":
+        print("\n--- RESUMO DA COMPRA ---")
+        
+        if len(lista_de_compras) == 0:
+            print("A lista está vazia.")
+        else:
+            total = 0
+            
+            for posicao, item in enumerate(lista_de_compras):
+                print(posicao, ":", item[0], "- R$", format(item[1], ".2f"))
+                total = total + item[1]
+            #print (-----------------------) apenas para fazer uma faixa
+            print("------------------------")
+            print("TOTAL: R$", format(total, ".2f"))
+                
+    elif opcao == "3":
+        if len(lista_de_compras) == 0:
+            print("Não há itens para remover.")
+        else:
+            print("\nItens atuais:")
+            
+            for posicao, item in enumerate(lista_de_compras):
+                print(posicao, ":", item[0], "- R$", format(item[1], ".2f"))
+            
+            indice = int(input("Digite o número do item que deseja remover: "))
+            
+            if 0 <= indice < len(lista_de_compras):
+                removido = lista_de_compras.pop(indice)
+                print("O item", removido[0], "foi removido!")
+            else:
+                print("Número inválido.")
+                
+    elif opcao == "4":
+        print("Saindo do bagulho!")
+        break
+        
+    else:
+        print("Opção inválida. Escolha entre 1 e 4.")

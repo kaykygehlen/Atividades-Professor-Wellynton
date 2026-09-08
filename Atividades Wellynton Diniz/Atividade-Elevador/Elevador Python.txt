@@ -1,0 +1,93 @@
+elevador_a = 0
+elevador_b = 0
+elevador_c = 0
+
+matutino = 0
+vespertino = 0
+noturno = 0
+
+quantidade = int(input("Digite a quantidade de moradores pesquisados: "))
+
+for i in range(quantidade):
+
+    print("\n--- MORADOR", i + 1, "---")
+
+    print("Qual elevador você utiliza com mais frequência?")
+    print("A - Elevador A")
+    print("B - Elevador B")
+    print("C - Elevador C")
+
+    elevador = input("Resposta: ").upper()
+
+    if elevador == "A":
+        elevador_a += 1
+    elif elevador == "B":
+        elevador_b += 1
+    elif elevador == "C":
+        elevador_c += 1
+
+    print("\nQual período você utiliza o elevador?")
+    print("M - Matutino")
+    print("V - Vespertino")
+    print("N - Noturno")
+
+    periodo = input("Resposta: ").upper()
+
+    if periodo == "M":
+        matutino += 1
+    elif periodo == "V":
+        vespertino += 1
+    elif periodo == "N":
+        noturno += 1
+
+
+# A - Elevador mais utilizado
+
+if elevador_a >= elevador_b and elevador_a >= elevador_c:
+    elevador_mais_utilizado = "Elevador A"
+elif elevador_b >= elevador_a and elevador_b >= elevador_c:
+    elevador_mais_utilizado = "Elevador B"
+else:
+    elevador_mais_utilizado = "Elevador C"
+
+
+# B - Período mais utilizado
+
+if matutino >= vespertino and matutino >= noturno:
+    periodo_mais_utilizado = "Matutino"
+    maior_periodo = matutino
+elif vespertino >= matutino and vespertino >= noturno:
+    periodo_mais_utilizado = "Vespertino"
+    maior_periodo = vespertino
+else:
+    periodo_mais_utilizado = "Noturno"
+    maior_periodo = noturno
+
+
+# Descobrir o período menos utilizado
+
+menor_periodo = min(matutino, vespertino, noturno)
+
+
+# C - Diferença percentual
+
+porcentagem_maior = (maior_periodo / quantidade) * 100
+porcentagem_menor = (menor_periodo / quantidade) * 100
+
+diferenca = porcentagem_maior - porcentagem_menor
+
+
+# Mostrar resultados
+
+print("\n==============================")
+print("       RESULTADO DA PESQUISA")
+print("==============================")
+
+print("A. Elevador mais utilizado:", elevador_mais_utilizado)
+
+print("B. Período mais utilizado:", periodo_mais_utilizado)
+
+print("C. Diferença percentual entre o mais usado e o menos usado:",
+      f"{diferenca:.2f}%")
+
+print("==============================")
